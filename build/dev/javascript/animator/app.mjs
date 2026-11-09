@@ -135,7 +135,7 @@ export const include_app_in_gallery = false;
 /**
  * A link to your video from Problem 14, which anyone with the link can watch.
  */
-export const video_url = "";
+export const video_url = "https://drive.google.com/file/d/1OaqmgNrdkYYm8vNTIZdAPq6q17thSAaU/view?usp=sharing";
 
 /**
  * Set to True if you would like your video included in the course gallery.
@@ -393,6 +393,22 @@ function view_error(model) {
   }
 }
 
+function parse_speed(v, default$) {
+  let $ = $float.parse(v);
+  if ($ instanceof Ok) {
+    let f = $[0];
+    return f;
+  } else {
+    let $1 = $int.parse(v);
+    if ($1 instanceof Ok) {
+      let i = $1[0];
+      return $int.to_float(i);
+    } else {
+      return default$;
+    }
+  }
+}
+
 function view_controls(model) {
   return $html.div(
     listPrepend($attr.class$("controls"), $List$Empty$const),
@@ -462,7 +478,7 @@ function view_controls(model) {
                               $event.on_input(
                                 (v) => {
                                   return new SetSpeed(
-                                    $result.unwrap($float.parse(v), model.speed),
+                                    parse_speed(v, model.speed),
                                   );
                                 },
                               ),
@@ -602,15 +618,15 @@ export function main() {
       "let_assert",
       FILEPATH,
       "app",
-      327,
+      338,
       "main",
       "Pattern match failed, no pattern matched the value.",
       {
         value: $,
-        start: 10545,
-        end: 10594,
-        pattern_start: 10556,
-        pattern_end: 10561
+        start: 10882,
+        end: 10931,
+        pattern_start: 10893,
+        pattern_end: 10898
       }
     )
   }

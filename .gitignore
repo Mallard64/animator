@@ -1,0 +1,9 @@
+build/
+.provenance/
+.provenance-manifest
+.server_logs/
+.vscode/
+*.zip
+grader.json
+grading/
+extension.txt
